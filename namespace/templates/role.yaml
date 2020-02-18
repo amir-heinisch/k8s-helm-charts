@@ -1,0 +1,26 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ .Release.Name }}-role-admin
+  namespace: {{ .Release.Name }}
+  labels:
+    ns: {{ .Release.Name }}
+    team: {{ splitList "-" .Release.Name | initial | join "-" | upper }}
+    environment: {{ splitList "-" .Release.Name | last }}
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - extension
+  resources:
+  - podsecuritypolicy
+  resourceNames:
+  - {{ .Release.Name }}-psp-restricted
+  - {{ .Release.Name }}-psp-priviledged
+  verbs:
+  -  use

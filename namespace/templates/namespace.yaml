@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    ns: {{ .Release.Name }}
+    team: {{ splitList "-" .Release.Name | initial | join "-" | upper }}
+    environment: {{ splitList "-" .Release.Name | last }}

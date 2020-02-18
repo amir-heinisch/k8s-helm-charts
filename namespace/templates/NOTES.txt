@@ -1,0 +1,10 @@
+Isolated namespace {{ .Release.Name | quote }} successfully created.
+
+NOTE! Members of the Team {{ splitList "-" .Release.Name | initial | join "-" | upper | quote }} can now simply login via oidc and use the namespace.
+
+More information on how to login with oidc can be found here: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-kubectl
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}

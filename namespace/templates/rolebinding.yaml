@@ -1,0 +1,18 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Release.Name }}-rolebinding-admin-oidc
+  namespace: {{ .Release.Name }}
+  labels:
+    ns: {{ .Release.Name }}
+    team: {{ splitList "-" .Release.Name | initial | join "-" | upper }}
+    environment: {{ splitList "-" .Release.Name | last }}
+roleRef:
+  kind: Role
+  name: {{ .Release.Name }}-role-admin
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: Group
+  name: oidc:{{ splitList "-" .Release.Name | initial | join "-" | upper }}
+  apiGroup: rbac.authorization.k8s.io

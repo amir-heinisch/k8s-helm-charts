@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Release.Name }}-quota
+  namespace: {{ .Release.Name }}
+  labels:
+    ns: {{ .Release.Name }}
+    team: {{ splitList "-" .Release.Name | initial | join "-" | upper }}
+    environment: {{ splitList "-" .Release.Name | last }}
+spec:
+  hard:
+    # Objects
+    pods: 30
+    replicationcontrollers: 30
+    configmaps: 120
+    secrets: 120
+    persistentvolumeclaims: 30
+    services: 30
+    services.loadbalancers: 0
+    services.nodeports: 0
+    resourcequotas: 1 # Just this one?!
+    # Compute
+    requests.cpu: 2
+    requests.memory: 2Gi
+    limits.cpu: 4
+    limits.memory: 4Gi
+    # Storage
+    requests.storage: 50Gi

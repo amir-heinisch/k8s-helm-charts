@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: {{ .Release.Name }}-limits
+  labels:
+    ns: {{ .Release.Name }}
+    team: {{ splitList "-" .Release.Name | initial | join "-" | upper }}
+    environment: {{ splitList "-" .Release.Name | last }}
+spec:
+  limits:
+  - type: Container
+    defaultRequest:
+      cpu: 50m
+      memory: 128Mi
+    default:
+      cpu: 700m
+      memory: 900Mi
+  - type: Pod
+    #maxLimitRequestRatio:
+      #memory: 2 # Limit can be max request * 2
+    min:
+      cpu: 10m
+      memory: 10Mi
+    max:
+      cpu: 800m
+      memory: 1Gi
+  - type: PersistentVolumeClaim
+    min:
+      storage: 1Gi
+    max:
+      storage: 2Gi

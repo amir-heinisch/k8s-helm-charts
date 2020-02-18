@@ -1,0 +1,8 @@
+apiVersion: v2
+name: examples_whoami
+description: This chart creates a whoami example deployment with ingress
+version: 1.0.0
+kubeVersion: ">= 1.16.0 < 1.18.0"
+maintainers:
+- name: Amir Heinisch
+  email: mail@amir-heinisch.de

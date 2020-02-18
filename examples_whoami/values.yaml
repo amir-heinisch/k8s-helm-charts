@@ -1,0 +1,15 @@
+# replicaCount to set number of pods
+pods:
+  replicas: 3
+
+container:
+  image: containous/whoami:latest
+
+service:
+  port: 80
+
+ingress:
+  host: *
+  path: /whoami
+  # TODO: use more dynamic way.
+  testurl: http://cluster/whoami

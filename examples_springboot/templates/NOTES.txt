@@ -1,0 +1,6 @@
+Example release {{ .Release.Name | quote }} successfully created.
+
+To learn more about the release, try:
+
+  $ helm status {{ .Release.Name }}
+  $ helm get {{ .Release.Name }}

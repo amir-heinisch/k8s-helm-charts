@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/rewrite-target: /
+  labels:
+   ns: {{ .Release.Namespace }}
+   app: {{ .Release.Name }}
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /spring
+        backend:
+          serviceName: {{ .Release.Name }}-service
+          servicePort: {{ .Values.service.port }}

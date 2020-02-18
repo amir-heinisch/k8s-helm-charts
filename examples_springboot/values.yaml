@@ -1,0 +1,6 @@
+pods:
+  replicas: 1
+container:
+  image: images.amir-heinisch.de/example_springboot
+service:
+  port: 443

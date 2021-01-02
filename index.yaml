@@ -1,1 +1,16 @@
-test
+apiVersion: v1
+entries:
+  examples_springboot:
+  - apiVersion: v2
+    created: "2021-02-12T23:36:24.39629146+01:00"
+    description: This chart creates a springboot example deployment with ingress
+    digest: 492ce9639d2abe4271a3ef16c4547c295be3744edcc295b8a75d797ba49a0887
+    kubeVersion: '>= 1.16.0 < 1.18.0'
+    maintainers:
+    - email: mail@amir-heinisch.de
+      name: Amir Heinisch
+    name: examples_springboot
+    urls:
+    - https://amir-heinisch.de/k8s-helm-charts/examples_springboot-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-02-12T23:36:24.395929232+01:00"
